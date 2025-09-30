@@ -1,23 +1,29 @@
 import altair as alt
 import pandas as pd
 import streamlit as st
+import os
 
 # Show the page title and description.
-st.set_page_config(page_title="Data Lake US-50")
-st.title("Data Lake US-50")
+st.set_page_config(page_title="US-50 Speed Lookup")
+st.title("US-50 Speed Lookup")
 st.write(
     """
-    This app visualizes data from [The Movie Database (TMDB)](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata).
-    It shows which movie genre performed best at the box office over the years. Just 
-    click on the widgets below to explore!
+    This app visualizes traffic speed data from US-50 in Maryland. It allows the user to search for the speeds of specific TMC segments over the 2024 year. Click on the widgets below to explore!
     """
 )
 
 
-# Load the data from a CSV. We're caching this so it doesn't reload every time the app
+# Load the data from a parquet file. We're caching this so it doesn't reload every time the app
 # reruns (e.g. if the user interacts with the widgets).
 @st.cache_data
 def load_data():
+
+    # storage_connection_string = os.environ['azure_datalakeus50_conn_string']
+    container_name = 'speed'
+    segments_blob = 'segments.parquet'
+    summary_blob = 'summary.parquet'
+    disaggregate_blob = 'disaggregate.parquet'
+
     df = pd.read_csv("data/movies_genres_summary.csv")
     return df
 
