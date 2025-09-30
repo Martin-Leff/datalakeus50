@@ -17,14 +17,6 @@ st.write(
 # reruns (e.g. if the user interacts with the widgets).
 # @st.cache_data
 def load_data():
-
-    # storage_connection_string = os.environ['azure_datalakeus50_conn_string']
-    # storage_connection_string = st.secrets['azure_datalakeus50_conn_string']
-    container_name = 'speed'
-    segments_blob = 'segments.parquet'
-    summary_blob = 'summary.parquet'
-    disaggregate_blob = 'disaggregate.parquet'
-
     df = pd.read_csv("data/movies_genres_summary.csv")
     return df
 
