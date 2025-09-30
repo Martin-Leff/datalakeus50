@@ -8,7 +8,7 @@ st.set_page_config(page_title="US-50 Speed Lookup")
 st.title("US-50 Speed Lookup")
 st.write(
     """
-    This app visualizes traffic speed data from US-50 in Maryland. It allows the user to search for the speeds of specific TMC segments over the 2024 year. Click on the widgets below to explore!
+    This app visualizes traffic speed data from US-50 in Maryland. It allows the user to search for the speeds of specific TMC segments over the 2024 year.
     """
 )
 
@@ -19,6 +19,7 @@ st.write(
 def load_data():
 
     # storage_connection_string = os.environ['azure_datalakeus50_conn_string']
+    storage_connection_string = st.secrets['azure_datalakeus50_conn_string']
     container_name = 'speed'
     segments_blob = 'segments.parquet'
     summary_blob = 'summary.parquet'
