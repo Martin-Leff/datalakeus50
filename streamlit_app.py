@@ -30,8 +30,6 @@ def process_blob(storage_connection_string, container_name, blob_name):
 def load_data():
     storage_connection_string = st.secrets['azure_datalakeus50_conn_string']
 
-    st.write(storage_connection_string)
-
     container_name = 'speed'
     segments_blob = 'segments.parquet'
     summary_blob = 'summary.parquet'
