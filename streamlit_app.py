@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 import os
 from io import BytesIO
-from azure.storage.blob import ContainerClient
+# from azure.storage.blob import ContainerClient
 
 # Show the page title and description.
 st.set_page_config(page_title="US-50 Speed Lookup")
@@ -35,7 +35,7 @@ def load_data():
     summary_blob = 'summary.parquet'
     disaggregate_blob = 'disaggregate.parquet'
 
-    disaggregate_df = process_blob(storage_connection_string, container_name, disaggregate_blob)
+    # disaggregate_df = process_blob(storage_connection_string, container_name, disaggregate_blob)
 
     df = pd.read_csv("data/movies_genres_summary.csv")
     return df
