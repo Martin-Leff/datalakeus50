@@ -18,6 +18,9 @@ st.write(
 # @st.cache_data
 def load_data():
     storage_connection_string = st.secrets['azure_datalakeus50_conn_string']
+
+    print(storage_connection_string)
+
     df = pd.read_csv("data/movies_genres_summary.csv")
     return df
 
