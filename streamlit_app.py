@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 import os
 from io import BytesIO
-from azure.storage.blob import ContainerClient
+# from azure.storage.blob import ContainerClient
 
 # Show the page title and description.
 st.set_page_config(page_title="US-50 Speed Lookup")
@@ -29,6 +29,8 @@ def process_blob(storage_connection_string, container_name, blob_name):
 # @st.cache_data
 def load_data():
     storage_connection_string = st.secrets['azure_datalakeus50_conn_string']
+
+    st.write(storage_connection_string)
 
     container_name = 'speed'
     segments_blob = 'segments.parquet'
