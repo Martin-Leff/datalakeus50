@@ -2,6 +2,8 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 import os
+from io import BytesIO
+from azure.storage.blob import ContainerClient
 
 # Show the page title and description.
 st.set_page_config(page_title="US-50 Speed Lookup")
@@ -12,6 +14,15 @@ st.write(
     """
 )
 
+def process_blob(storage_connection_string, container_name, blob_name):
+    container = ContainerClient.from_connection_string(conn_str=storage_connection_string,
+                                                       container_name=container_name)
+    blob_client = container.get_blob_client(blob=blob_name)
+    stream_downloader = blob_client.download_blob()
+    stream = BytesIO()
+    stream_downloader.readinto(stream)
+    processed_df = pd.read_parquet(stream, engine='pyarrow')
+    return processed_df
 
 # Load the data from a parquet file. We're caching this so it doesn't reload every time the app
 # reruns (e.g. if the user interacts with the widgets).
@@ -19,7 +30,12 @@ st.write(
 def load_data():
     storage_connection_string = st.secrets['azure_datalakeus50_conn_string']
 
-    print(storage_connection_string)
+    container_name = 'speed'
+    segments_blob = 'segments.parquet'
+    summary_blob = 'summary.parquet'
+    disaggregate_blob = 'disaggregate.parquet'
+
+    disaggregate_df = process_blob(storage_connection_string, container_name, disaggregate_blob)
 
     df = pd.read_csv("data/movies_genres_summary.csv")
     return df
