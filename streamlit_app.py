@@ -35,14 +35,14 @@ def load_data():
     summary_blob = 'summary.parquet'
     disaggregate_blob = 'disaggregate.parquet'
 
-    disaggregate_df = process_blob(storage_connection_string, container_name, disaggregate_blob)
+    # disaggregate_df = process_blob(storage_connection_string, container_name, disaggregate_blob)
+    # disaggregate_df = disaggregate_df.head()
 
-    disaggregate_df = disaggregate_df.head()
+    segments_df = process_blob(storage_connection_string, container_name, segments_blob)
 
     st.dataframe(
-    disaggregate_df,
-    use_container_width=True,
-)
+    segments_df,
+    )
 
     df = pd.read_csv("data/movies_genres_summary.csv")
     return df
