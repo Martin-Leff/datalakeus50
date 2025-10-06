@@ -35,9 +35,8 @@ def load_data():
     summary_blob = 'summary.parquet'
     disaggregate_blob = 'disaggregate.parquet'
 
-    # segments_df = process_blob(storage_connection_string, container_name, segments_blob)
+    segments_df = process_blob(storage_connection_string, container_name, segments_blob)
 
-    segments_df = 1
 
     df = pd.read_csv("data/movies_genres_summary.csv")
     return df, segments_df
@@ -68,6 +67,11 @@ st.dataframe(
     df_reshaped,
     use_container_width=True,
     column_config={"year": st.column_config.TextColumn("Year")},
+)
+
+
+st.dataframe(
+    segments_df,
 )
 
 # Display the data as an Altair chart using `st.altair_chart`.
