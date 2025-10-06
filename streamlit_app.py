@@ -35,20 +35,13 @@ def load_data():
     summary_blob = 'summary.parquet'
     disaggregate_blob = 'disaggregate.parquet'
 
-    # disaggregate_df = process_blob(storage_connection_string, container_name, disaggregate_blob)
-    # disaggregate_df = disaggregate_df.head()
-
     segments_df = process_blob(storage_connection_string, container_name, segments_blob)
 
-    st.dataframe(
-    segments_df,
-    )
-
     df = pd.read_csv("data/movies_genres_summary.csv")
-    return df
+    return df, segments_df
 
 
-df = load_data()
+df, segments_df = load_data()
 
 # Show a multiselect widget with the genres using `st.multiselect`.
 genres = st.multiselect(
