@@ -37,6 +37,8 @@ def load_data():
 
     disaggregate_df = process_blob(storage_connection_string, container_name, disaggregate_blob)
 
+    disaggregate_df = disaggregate_df.head()
+
     st.dataframe(
     disaggregate_df,
     use_container_width=True,
