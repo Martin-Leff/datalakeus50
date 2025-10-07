@@ -26,7 +26,7 @@ def process_blob(storage_connection_string, container_name, blob_name):
 
 # Load the data from a parquet file. We're caching this so it doesn't reload every time the app
 # reruns (e.g. if the user interacts with the widgets).
-@st.cache_data
+# @st.cache_data
 def load_data():
     storage_connection_string = st.secrets['azure_datalakeus50_conn_string']
 
