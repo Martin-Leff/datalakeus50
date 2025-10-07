@@ -49,7 +49,7 @@ df, segments_df, summary_df, disaggregate_df = load_data()
 
 # Allow User to select Date and Time
 # TODO: set min/max date and time ranges based on min/max from data
-date = st.date_input
+date = st.date_input()
 
 # Show a multiselect widget with the genres using `st.multiselect`.
 genres = st.multiselect(
