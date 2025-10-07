@@ -26,7 +26,7 @@ def process_blob(storage_connection_string, container_name, blob_name):
 
 # Load the data from a parquet file. We're caching this so it doesn't reload every time the app
 # reruns (e.g. if the user interacts with the widgets).
-# @st.cache_data
+@st.cache_data
 def load_data():
     storage_connection_string = st.secrets['azure_datalakeus50_conn_string']
 
@@ -49,7 +49,7 @@ df, segments_df, summary_df, disaggregate_df = load_data()
 
 # Allow User to select Date and Time
 # TODO: set min/max date and time ranges based on min/max from data
-date = st.date_input()
+date = st.date_input(label='Date Select', value='today')
 
 # Show a multiselect widget with the genres using `st.multiselect`.
 genres = st.multiselect(
