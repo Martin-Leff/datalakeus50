@@ -61,8 +61,6 @@ st.dataframe(
     filtered_df,
 )
 
-st.title("Template Leftovers")
-
 # Show a multiselect widget with the TMCs using `st.multiselect`.
 tmcs = st.multiselect(
     "TMC",
@@ -71,6 +69,13 @@ tmcs = st.multiselect(
 )
 
 st.title("Template Leftovers")
+
+genres = st.multiselect(
+    "TMC",
+    segments_df.tmc.unique(),
+    ["Action", "Adventure"],
+)
+
 # Show a slider widget with the years using `st.slider`.
 years = st.slider("Years", 1986, 2006, (2000, 2016))
 
