@@ -73,7 +73,6 @@ st.title("Template Leftovers")
 genres = st.multiselect(
     "TMC",
     segments_df.tmc.unique(),
-    ["Action"],
 )
 
 # Show a slider widget with the years using `st.slider`.
