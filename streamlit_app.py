@@ -55,17 +55,17 @@ st.dataframe(
     summary_df.head(),
 )
 
-filtered_df = segments_df[segments_df['tmc']=='110N09017']
-
-st.dataframe(
-    filtered_df,
-)
-
 # Show a multiselect widget with the TMCs using `st.multiselect`.
 tmcs = st.multiselect(
     "TMC",
     segments_df.tmc.unique(),
     ["110N09017"],
+)
+
+filtered_df = segments_df[segments_df['tmc']==tmcs]
+
+st.dataframe(
+    filtered_df,
 )
 
 st.title("Template Leftovers")
