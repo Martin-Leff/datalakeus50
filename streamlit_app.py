@@ -78,7 +78,7 @@ st.dataframe(
 
 
 st.dataframe(
-    segments_df,
+    summary_df,
 )
 
 # Display the data as an Altair chart using `st.altair_chart`.
