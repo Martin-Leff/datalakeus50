@@ -63,7 +63,14 @@ st.dataframe(
 
 # Show a multiselect widget with the genres using `st.multiselect`.
 genres = st.multiselect(
-    "Genres test",
+    "TMC",
+    segments_df.tmc.unique(),
+    ["110N09017"],
+)
+
+# Show a multiselect widget with the genres using `st.multiselect`.
+genres = st.multiselect(
+    "Genres",
     df.genre.unique(),
     ["Action", "Adventure"],
 )
