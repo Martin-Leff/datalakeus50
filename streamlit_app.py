@@ -50,6 +50,17 @@ df, segments_df, summary_df, disaggregate_df = load_data()
 # TODO: set min/max date and time ranges based on min/max from data
 date = st.date_input(label='Date Select', value='today')
 
+
+st.dataframe(
+    summary_df.head(),
+)
+
+filtered_df = segments_df[segments_df['tmc']=='110N09017']
+
+st.dataframe(
+    filtered_df,
+)
+
 # Show a multiselect widget with the genres using `st.multiselect`.
 genres = st.multiselect(
     "Genres test",
@@ -76,15 +87,6 @@ st.dataframe(
 )
 
 
-st.dataframe(
-    summary_df.head(),
-)
-
-filtered_df = segments_df[segments_df['tmc']=='110N09017']
-
-st.dataframe(
-    filtered_df,
-)
 
 # Display the data as an Altair chart using `st.altair_chart`.
 df_chart = pd.melt(
