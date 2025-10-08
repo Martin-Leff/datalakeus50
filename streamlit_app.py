@@ -81,6 +81,12 @@ st.dataframe(
     segments_df,
 )
 
+filtered_df = segments_df[segments_df['tmc']=='110N09017']
+
+st.dataframe(
+    filtered_df,
+)
+
 # Display the data as an Altair chart using `st.altair_chart`.
 df_chart = pd.melt(
     df_reshaped.reset_index(), id_vars="year", var_name="genre", value_name="gross"
