@@ -37,9 +37,8 @@ def load_data():
 
     segments_df = process_blob(storage_connection_string, container_name, segments_blob)
     summary_df = process_blob(storage_connection_string, container_name, summary_blob)
-    # disaggregate_df = process_blob(storage_connection_string, container_name, disaggregate_blob)
+    disaggregate_df = process_blob(storage_connection_string, container_name, disaggregate_blob)
 
-    disaggregate_df = 1
 
     df = pd.read_csv("data/movies_genres_summary.csv")
     return df, segments_df, summary_df, disaggregate_df
