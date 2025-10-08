@@ -78,7 +78,7 @@ st.dataframe(
 
 
 st.dataframe(
-    segments_df,
+    segments_df.head(),
 )
 
 filtered_df = segments_df[segments_df['tmc']=='110N09017']
