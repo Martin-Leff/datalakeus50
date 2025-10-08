@@ -72,7 +72,7 @@ st.title("Template Leftovers")
 
 genres = st.multiselect(
     "TMC",
-    df.genres.unique(),
+    df.genre.unique(),
     ["Action"],
 )
 
