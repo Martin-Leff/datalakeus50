@@ -62,7 +62,7 @@ tmcs = st.multiselect(
     ["110N09017"],
 )
 
-filtered_df = segments_df[segments_df['tmc'] isin tmcs]
+filtered_df = segments_df[segments_df['tmc'].isin(tmcs)]
 
 st.dataframe(
     filtered_df,
