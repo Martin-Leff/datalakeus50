@@ -90,7 +90,7 @@ df_reshaped = df_reshaped.sort_values(by="year", ascending=False)
 # Display the data as a table using `st.dataframe`.
 st.dataframe(
     df_reshaped,
-    use_container_width=True,
+    width='stretch',
     column_config={"year": st.column_config.TextColumn("Year")},
 )
 
